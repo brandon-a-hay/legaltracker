@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if bills %}
+    <p>Search results for <strong>{{state}}</strong> and keyword: <strong>{{keyword}}</strong></p>
+        <ul>
+        {% for bill in bills %}
+            <li><a href="{% url 'detail' bill.state bill.session bill.bill_id %}">{{ bill.title }}</a> id: {{bill.bill_id}}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bills found.</p>
+    {% endif %}
+{% endblock content %}

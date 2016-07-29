@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
-    'sunlight'
+    'billtrack.apps.BilltrackConfig',
+    'sunlight',
 ]
 
 MIDDLEWARE_CLASSES = [

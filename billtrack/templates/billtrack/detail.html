@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if bill %}
+  <h1>{{bill.title}}</h1>
+    <p>created: {{bill.created_at}}</p>
+    <h3>Status:</h3>
+    <ul>
+    {% for vote in bill.votes %}
+      {% if vote.passed == true %}
+        <li>{{vote.motion}}: Passed</li>
+      {% else %}
+        <li>{{vote.motion}}: Failed</li>
+      {% endif %}
+      <h3>Votes</h3>
+      <ul>
+        <li>Yes: {{vote.yes_count}}</li>
+        <li>No: {{vote.no_count}}</li>
+        <li>Other: {{vote.other_count}}</li>
+      </ul>
+    {% endfor %}
+    </ul>
+    Full text sources: <br>
+    {% for source in bill.sources %}
+      <a href="{{source.url}}" target="_blank">
+        {{source.url}}
+      </a><br>
+    {% endfor %}
+
+    <h3>Sponsors:</h3>
+    <ul>
+      {% for s in bill.sponsors %}
+        <li>{{s.name}} :  {{s.type}}</li>
+      {% endfor %}
+    </ul>
+    
+  {% endif %}
+{% endblock content %}

@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.core import serializers
-from sunlight import openstates
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
@@ -15,9 +13,4 @@ def results(request, question_id):
 
 def vote(request, question_id):
     return HttpResponse("You're voting on question %s." % question_id)
-
-def bills(request, state):
-    # call sunlightfoundation api here
-    bills = openstates.bills(state=state, q='farmers')
-    return HttpResponse(bills, content_type='application/json')
 
