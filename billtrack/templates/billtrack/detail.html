@@ -5,8 +5,8 @@
     <p>created: {{bill.created_at}}</p>
     <h3>Status:</h3>
     <ul>
-    {% for vote in bill.votes %}
-      {% if vote.passed == true %}
+    {% for vote in bill.votes %}    
+      {% if vote.passed == true or True %}
         <li>{{vote.motion}}: Passed</li>
       {% else %}
         <li>{{vote.motion}}: Failed</li>
