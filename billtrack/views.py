@@ -14,6 +14,7 @@ def search(request):
         keyword = request.POST.get('keyword', None)
         # call sunlightfoundation api here
         bills = openstates.bills(state=state, q=keyword)
+        print(len(bills))
         context = {'bills': bills, 'state': state, 'keyword': keyword}
         return render(request, 'billtrack/bills.html', context)
     else:
