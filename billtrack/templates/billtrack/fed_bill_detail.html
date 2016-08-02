@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if bill %}
+  <h1>{{bill.title}}</h1>
+    <p>created: {{bill.introduced_date}}</p>
+    <p>{{bill.bill_type}}</p>
+    <ul>
+      {% for subject in vote.subjects %}
+        <li>{{subject}}</li>
+      {% endfor %}
+    </ul>
+    <ul>
+      {% for scraped_subject in vote.scraped_subjects %}
+        <li>{{scraped_subject}}</li>
+      {% endfor %}
+    </ul>
+    <p>{{bill.current_status_description}}</p>
+    {% if bill.committees %}
+      <h3>Committees</h3>
+      <ul>
+        {% for c in bill.committees %}
+          <li><a href="{{c.url}}" target="_blank">{{c.name}}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    Full text sources: <br>
+    <a href="{{bill.link}}">{{bill.link}}</a>
+
+    <h3>Sponsor:</h3>
+    <a href="{{bill.sponsor.link}}">{{bill.sponsor.name}}</a>
+    
+  {% endif %}
+{% endblock content %}

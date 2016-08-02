@@ -3,6 +3,16 @@
   {% if bill %}
   <h1>{{bill.title}}</h1>
     <p>created: {{bill.created_at}}</p>
+    <ul>
+      {% for subject in vote.subjects %}
+        <li>{{subject}}</li>
+      {% endfor %}
+    </ul>
+    <ul>
+      {% for scraped_subject in vote.scraped_subjects %}
+        <li>{{scraped_subject}}</li>
+      {% endfor %}
+    </ul>
     <h3>Status:</h3>
     <ul>
     {% for vote in bill.votes %}    

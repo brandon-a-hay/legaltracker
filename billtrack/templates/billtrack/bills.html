@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
     {% if bills %}
-    <p>{{bills | length}} search results for <strong>{{state}}</strong> and keyword: <strong>{{keyword}}</strong></p>
+        <p>{{bills | length}} search results for <strong>{{state}}</strong> and keyword: <strong>{{keyword}}</strong></p>
         <ul>
         {% for bill in bills %}
-            <li><a href="{% url 'detail' bill.state bill.session bill.bill_id %}">{{ bill.title }}</a> id: {{bill.bill_id}}</li>
+            <li><a href="{% url 'detail' bill.state bill.session bill.bill_id %}">{{ bill.title }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
-        <p>No bills found.</p>
+        <p>No state bills found.</p>
+    {% endif %}
+    {% if fed_bills.objects %}
+        <p>{{fed_bills.objects | length}} search results for federal legislation with keyword: <strong>{{keyword}}</strong></p>
+        <ul>
+            {% for bill in fed_bills.objects %}
+                <li><a href="{% url 'fed_bill_detail' bill.id %}">{{bill.title}}</a></li>
+            {% endfor %}
+        </ul>
     {% endif %}
 {% endblock content %}

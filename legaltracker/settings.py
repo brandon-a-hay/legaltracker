@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'billtrack.apps.BilltrackConfig',
     'sunlight',
+    'requests'
 ]
 
 MIDDLEWARE_CLASSES = [
